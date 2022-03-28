@@ -1,0 +1,29 @@
+body {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)),
+    url("pexels-negative-space-34676.jpg");
+    background-repeat: no-repeat, no-repeat;
+    background-position: center, center;
+    background-size: 80%, cover;
+
+    padding-top: 50px;
+    text-align: center;
+    color: #333333;
+    max-width: 650px;
+    min-height: 100vh;
+    margin: auto;
+}
+
+ul#list li{
+    list-style-type: none;
+    margin: 20px;
+    display: inline;
+}
+
+.selector-for-some-widget {
+    box-sizing: content-box;
+}
+
+.img-fluid{
+    max-width: 100%;
+    height: auto;
+}
