@@ -1,29 +1,75 @@
 body {
-    background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)),
+    background-image: linear-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 1)),
     url("pexels-negative-space-34676.jpg");
     background-repeat: no-repeat, no-repeat;
     background-position: center, center;
     background-size: 80%, cover;
+    background-blend-mode: exclusion;
 
     padding-top: 50px;
     text-align: center;
-    color: #333333;
+    font-family: Uroob, serif;
+    font-size: 18pt;
+    color: #ffffff;
     max-width: 650px;
     min-height: 100vh;
     margin: auto;
 }
 
-ul#list li{
+ul#list li {
     list-style-type: none;
     margin: 20px;
-    display: inline;
+    display: inline-block;
 }
 
-.selector-for-some-widget {
-    box-sizing: content-box;
-}
-
-.img-fluid{
-    max-width: 100%;
+img {
+    width: 100%;
     height: auto;
+    padding-top: 20px;
+
+}
+
+h1 {
+    font-size: 35pt;
+    font-weight: bold;
+}
+
+input {
+    border: 3px solid #555;
+    transition: width 0.4s ease-in-out;
+    width: 32%;
+    font-size: 15pt;
+}
+
+input:focus {
+    width: 50%;
+    border: 3px solid #555;
+    background-color: #ffffff;
+    font-size: 15pt;
+}
+
+button {
+    background-color: cornflowerblue;
+    border: 3px solid #ffffff;
+    font-size: 15pt;
+    transition: 0.2s;
+}
+
+button:hover {
+    background-color: #3e8e41;
+    color: white;
+    font-size: 15pt;
+}
+
+a {
+    scale: 100%;
+    color: white;
+    padding-top: 20px;
+    transition: 0.2s;
+}
+
+a:hover {
+    scale: 120%;
+    color: #3e8e41;
+    padding-top: 20px;
 }
