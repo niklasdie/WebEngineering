@@ -75,15 +75,22 @@ const express = require("express")
 let app = express()
 const port = 3000
 
+// configuring port
+app.listen(port, function () {
+    console.log("Server listening on: http://localhost:" + port)
+})
+
+// route student
 app.get("/student", function (req, res) {
     res.type("text/plain")
-    let str
+    let str = ""
     for (let s in arr) {
         str += arr[s].toString() + "\n"
     }
     res.send(str)
 })
 
+// route studentFactory
 app.get("/studentFactory", function (req, res) {
     res.type("text/plain")
     var studentFactory = createStudentFactory(5)
@@ -91,6 +98,23 @@ app.get("/studentFactory", function (req, res) {
     res.send(max.toString())
 })
 
-app.listen(port, function () {
-    console.log("Server listening on: http://localhost:" + port)
+// enabling public folder in root url
+let path = require('path')
+app.use(express.static(path.join(__dirname, 'public')));
+
+// enable express.urlencoded
+app.use(express.urlencoded({extended: true}))
+
+// route print post
+app.post("/print", function (req, res) {
+    res.type("text/plain")
+    res.send(req.body.user +" "+ req.body.pw + " " + req.body.note)
 })
+
+// route print get
+app.get("/print", function (req, res) {
+    res.type("text/plain")
+    res.send(req.query.user +" "+ req.query.pw + " " + req.query.note)
+})
+
+
