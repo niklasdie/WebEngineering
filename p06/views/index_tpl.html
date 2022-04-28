@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Studenten-Infos</title>
+    <script type="text/javascript" src="../app.js"></script>
+</head>
+<body>
+<!--post da sonst die attribute in der url stehen-->
+<form action="/print" method="post">
+    <label>
+        User:
+        <input name="user" id="user">
+    </label> <br>
+    <label>
+        Passwort:
+        <input name="pw" id="pw">
+    </label> <br>
+    <label>
+        Note:
+        <select name="note">
+            <option value="1">sehr gut</option>
+            <option value="2">gut</option>
+            <option value="3">befriedigend</option>
+            <option value="4">ausreichend</option>
+            <option value="5">mangelhaft</option>
+            <option value="6">ungenügend</option>
+        </select>
+    </label> <br>
+    <input type="submit" value="Submit">
+</form>
+
+<p id="cookie_data">{{cookie_data}}</p>
+
+</body>
+</html>
