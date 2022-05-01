@@ -75,16 +75,22 @@ const express = require("express")
 const cookieParser = require('cookie-parser')
 const {check} = require('express-validator')
 const Mustache = require('mustache');
+const consolidate = require('consolidate')
+let path = require('path')
 let app = express()
 app.use(cookieParser())
-const port = 3000
+app.engine('html', consolidate.mustache)
+app.set('view engine', 'html')
+app.set('views', path.join(__dirname,'views'))
 
+const port = 3000
 // configuring port
+
 app.listen(port, function () {
     console.log("Server listening on: http://localhost:" + port)
 })
-
 // route student
+
 app.get("/student", function (req, res) {
     res.type("text/plain")
     let str = ""
@@ -93,17 +99,16 @@ app.get("/student", function (req, res) {
     }
     res.send(str)
 })
-
 // route studentFactory
+
 app.get("/studentFactory", function (req, res) {
     res.type("text/plain")
     var studentFactory = createStudentFactory(5)
     let max = studentFactory("Max")
     res.send(max.toString())
 })
-
 // enabling public folder in root url
-let path = require('path')
+const {load} = require("mime");
 app.use(express.static(path.join(__dirname, 'views')));
 
 // enable express.urlencoded
@@ -143,10 +148,26 @@ app.get("/print", [
     }
 })
 
-app.get("/", function (req, res) {
-    let template = document.getElementById('cookie_data').innerHTML
+app.post("/", function (req, res) {
+    let date = new Date(Date.now())
+    let newCookie = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds()
+    res.cookie('lastVisited', newCookie)
     let oldCookie = req.cookies.lastVisited
-    let output = Mustache.render(template, {cookie_data: oldCookie});
+    if(!oldCookie) {
+        oldCookie = "Erster Besuch!"
+    }
+    let output = Mustache.render("index_tpl.html", {cookie_data: oldCookie});
+    res.render("index_tpl.html", {cookie_data: oldCookie})
 })
 
-
+app.get("/", function (req, res) {
+    let date = new Date(Date.now())
+    let newCookie = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds()
+    res.cookie('lastVisited', newCookie)
+    let oldCookie = req.cookies.lastVisited
+    if(!oldCookie) {
+        oldCookie = "Erster Besuch!"
+    }
+    let output = Mustache.render("index_tpl.html", {cookie_data: oldCookie});
+    res.render("index_tpl.html", {cookie_data: oldCookie})
+})
