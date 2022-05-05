@@ -1,7 +1,7 @@
 function getFalafel() {
     const falafel = "Falafel"
     console.log(falafel + " aus dem Kühlschrank geholt")
-    // TODO: ...
+    return falafel
 }
 
 function fryFalafel(falafel) {
@@ -9,28 +9,35 @@ function fryFalafel(falafel) {
 	setTimeout(function() {
 		const friedFalafel = "Frittierte " + falafel
 		console.log(falafel + " frittiert")
-		// TODO: ...
+		return friedFalafel
     }, 300);
 }
 
-function getWrap(/* (nicht cuncurrent) TODO: Weiterleitung */) {
+function getWrap(friedFalafel) {
     const wrap = "Wrap"
     console.log(wrap + " aus dem Schrank geholt")
-    // TODO: ...
+    return wrap, friedFalafel
 }
 
 function assembleFalafelWrap(wrap, friedFalafel) {
     const falafelwrap = "Falafel-Wrap"
     console.log(friedFalafel + " in " + wrap + " gewickelt")
-    // TODO: ...
+    return falafelwrap
 }
 
 function prepareFalafelWrap() {
-    // TODO: Aufrufen der Zubereitungsschritte
+    return getFalafel().then(result => {
+        return fryFalafel(result)
+    }).then(result => {
+        return getWrap(result)
+    }).then(result => {
+        return assembleFalafelWrap(result[0], result[1])
+    })
 }
 
 function serve(meal) {
     console.log(meal + " serviert")
 }
 
-// TODO: Zubereiten und Servieren
+let meal = prepareFalafelWrap()
+serve(meal)
