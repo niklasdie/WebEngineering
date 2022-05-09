@@ -1,38 +1,43 @@
 function getFalafel() {
     const falafel = "Falafel"
     console.log(falafel + " aus dem Kühlschrank geholt")
-    // TODO: ...
+    return Promise.resolve(falafel)
 }
 
 function fryFalafel(falafel) {
-	// TODO: ...
+	return new Promise(resolve => {
 	setTimeout(function() {
 		const friedFalafel = "Frittierte " + falafel
 		console.log(falafel + " frittiert")
-		// TODO: ...
+		resolve(friedFalafel)
     }, 300);
+    })
 }
 
 
 function getWrap() {
     const wrap = "Wrap"
     console.log(wrap + " aus dem Schrank geholt")
-    // TODO: ...
+    return Promise.resolve(wrap)
 }
 
 function assembleFalafelWrap(wrap, friedFalafel) {
     const falafelwrap = "Falafel-Wrap"
     console.log(friedFalafel + " in " + wrap + " gewickelt")
-    // TODO: ...
+    return Promise.resolve(falafelwrap)
 }
 
-/* TODO */ function prepareFalafelWrap() {
-    // TODO: Aufrufen der Zubereitungsschritte
+async function prepareFalafelWrap() {
+    const prom = Promise.all([fryFalafel(await getFalafel()), getWrap()])
+
+    return Promise.resolve(prom.then(ret => {
+        return assembleFalafelWrap(ret[1], ret[0])
+    }))
 }
 
-/* TODO */ function serve() {
-    // TODO: Aufrufen der Zubereitung
+async function serve() {
+    const meal = await prepareFalafelWrap()
     console.log(meal + " serviert")
 }
 
-// TODO: Servieren
+serve()
