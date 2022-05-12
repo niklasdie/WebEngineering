@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script type="text/javascript" src="../server.js"></script>
+    <meta charset="UTF-8">
+    <title>Studenten-Infos</title>
+</head>
+<body>
+<!--post da sonst die attribute in der url stehen-->
+<form action="/" method="post">
+    <label>
+        Neuer Eintrag:
+        <input name="todo" id="todo">
+    </label>
+    <input id="submit" type="submit" value="Submit">
+    <br>
+
+    <h1>TODOs</h1>
+</form>
+
+<!--<p>{{target}}</p>-->
+
+<p> {{ #. }}
+    <ul> {{#todos}}
+        <li>{{todo}}</li>
+        {{/todos}}
+    </ul>
+</p>
+{{ /. }}
+
+</body>
+</html>
