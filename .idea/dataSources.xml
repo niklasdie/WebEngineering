@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="webengDB" uuid="643cbf29-73c7-4d7b-b801-11b4ff7cca0d">
+    <data-source source="LOCAL" name="webengDB.db" uuid="fb23dc44-caed-4bde-99c8-fb85837034af">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/p11/db/webengDB</jdbc-url>
+      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/p12/db/webengDB.db</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>
